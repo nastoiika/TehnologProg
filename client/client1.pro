@@ -10,16 +10,27 @@ CONFIG += c++17
 
 SOURCES += \
     authregform.cpp \
+    functionsforclient.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    metod_nuton.cpp \
+    music_file.cpp \
+    stats.cpp
 
 HEADERS += \
     authregform.h \
-    mainwindow.h
+    functionsforclient.h \
+    mainwindow.h \
+    metod_nuton.h \
+    music_file.h \
+    stats.h
 
 FORMS += \
     authregform.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    metod_nuton.ui \
+    music_file.ui \
+    stats.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

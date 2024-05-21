@@ -17,6 +17,8 @@ public:
 
 private slots:
     void on_btn_auth_clicked();
+    void on_btn_registr_clicked();
+    void on_btn_login_clicked();
     void on_btn_reg_clicked();
 
 private:

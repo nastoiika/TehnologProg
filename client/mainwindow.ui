@@ -75,7 +75,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QPushButton" name="btn_metodN_2">
+      <widget class="QPushButton" name="btn_metodN">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(117,174,93);
 color: rgb(40,49,59);</string>
@@ -86,7 +86,7 @@ color: rgb(40,49,59);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_msg_music_2">
+      <widget class="QPushButton" name="btn_msg_music">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(117,174,93);
 color: rgb(40,49,59);</string>
@@ -97,7 +97,7 @@ color: rgb(40,49,59);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_stat_2">
+      <widget class="QPushButton" name="btn_stat">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(117,174,93);
 color: rgb(40,49,59);</string>
@@ -121,9 +121,6 @@ color: rgb(40,49,59);</string>
     </layout>
    </item>
   </layout>
-  <zorder>widget</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>horizontalSpacer</zorder>
   <zorder>verticalSpacer</zorder>
  </widget>
  <resources/>

@@ -17,6 +17,9 @@ public:
 
 private slots:
     void on_btn_exit_clicked();
+    void on_btn_metodN_clicked();
+    void on_btn_msg_music_clicked();
+    void on_btn_stat_clicked();
 
 private:
     Ui::mainwindow *ui;
