@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <QDebug>
 
+#include <QMap>
 class MyTcpServer : public QObject
 {
     Q_OBJECT
@@ -20,7 +21,7 @@ public slots:
     void slotServerRead();
 private:
     QTcpServer * mTcpServer;
-    QTcpSocket * mTcpSocket;
+    QMap<int, QTcpSocket*> mTcpSockets;
     //int server_status;
 };
 #endif // MYTCPSERVER_H
