@@ -17,5 +17,6 @@ QByteArray check(int Sock_Descriptor, QString task_number, QString variant, QStr
 
 QByteArray parse(int Sock_Descriptor, QString data_from_user);
 
+bool user_disconnect(int Sock_Descriptor);
 
 #endif // FUNCTIONSFORSERVER_H

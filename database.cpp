@@ -32,11 +32,11 @@ database* database::getInstance() {
 
 
 
-void database::userDisconnect(int socketDescr) {
+bool database::userDisconnect(int socketDescr) {
     QSqlQuery query(db);
     query.prepare("UPDATE user SET id_connection = 0 WHERE id_connection = :sockDesc");
     query.bindValue(":sockDesc", socketDescr);
-    query.exec();
+    return query.exec();
 }
 
 

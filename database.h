@@ -40,7 +40,7 @@ public:
     bool auth(int sockDescr, QString log, QString pass);
     QString stat(int socketDescr, QString log);
     bool check(int socketDescr, QString task_num, QString variant, QString answer);
-    void userDisconnect(int sockDescr);
+    bool userDisconnect(int sockDescr);
 };
 
 

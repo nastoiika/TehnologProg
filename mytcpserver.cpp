@@ -37,7 +37,6 @@ void MyTcpServer::slotNewConnection(){
 
 void MyTcpServer::slotServerRead(){
     QTcpSocket *curr_mTcpSocket = qobject_cast<QTcpSocket*>(sender());
-
     QString res = "";
     while(curr_mTcpSocket->bytesAvailable()>0)
     {
@@ -57,8 +56,8 @@ void MyTcpServer::slotServerRead(){
 
 void MyTcpServer::slotClientDisconnected(){
     QTcpSocket *curr_mTcpSocket = qobject_cast<QTcpSocket*>(sender());
-    database *db = database::getInstance();
-    db->userDisconnect(curr_mTcpSocket->socketDescriptor());
+    int sock_Descr = mTcpSockets.key(curr_mTcpSocket);
+    user_disconnect(sock_Descr);
     curr_mTcpSocket->close();
     mTcpSockets.remove(mTcpServer->socketDescriptor());
 }

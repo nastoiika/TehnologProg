@@ -28,8 +28,10 @@ QByteArray stat(int Sock_Descriptor, QString login){
 
 QByteArray check(int Sock_Descriptor, QString task_number, QString variant, QString answer){
     database *db = database::getInstance();
-    if (db->check(Sock_Descriptor, task_number, variant, answer))
-    return "check+";
+    if (db->check(Sock_Descriptor, task_number, variant, answer)){
+        return "check+";
+    }
+    return "check-";
 }
 
 
@@ -43,6 +45,7 @@ int func_number (QString name_of_func){
 
 
 QByteArray parse(int Sock_Descriptor, QString data_from_user){
+    qDebug() << Sock_Descriptor;
     QByteArray result;
     QStringList data_list = data_from_user.split('&');
     int number_of_func = func_number(data_list[0]);
@@ -70,3 +73,9 @@ QByteArray parse(int Sock_Descriptor, QString data_from_user){
     }
     return result;
 }
+
+bool user_disconnect(int Sock_Descriptor){
+    qDebug() << Sock_Descriptor;
+    return database::getInstance()->userDisconnect(Sock_Descriptor);
+}
+
