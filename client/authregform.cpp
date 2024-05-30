@@ -25,18 +25,23 @@ authregform::~authregform()
 
 void authregform::on_btn_auth_clicked()
 {
-    QString login = ui->line_login->text();
+    login = ui->line_login->text();
     QString password = ui->line_password->text();
 
     // Проверяем, что поля не пустые
-    if (!login.isEmpty() && !password.isEmpty())
+    if (!login.isEmpty() && !password.isEmpty() && is_auth(login, password))
     {
+
         // Закрываем окно authregform
         this->close();
 
         // Открываем mainwindow
         mainwindow *mainwindow1 = new mainwindow;
         mainwindow1->show();
+    }
+    else
+    {
+        qDebug() << "Ошибка";
     }
 }
 
@@ -48,14 +53,13 @@ void authregform::on_btn_reg_clicked()
     QString confirm = ui->line_confirm->text();
 
     // Проверяем, что поля не пустые
-    if (!login.isEmpty() && !password.isEmpty() && !email.isEmpty() && !confirm.isEmpty() && confirm == password)
+    if (!login.isEmpty() && !password.isEmpty() && !email.isEmpty() && !confirm.isEmpty() && confirm == password && on_reg(login, password, email))
     {
-        // Закрываем окно authregform
-        this->close();
-
-        // Открываем mainwindow
-        mainwindow *mainwindow1 = new mainwindow;
-        mainwindow1->show();
+        emit on_btn_login_clicked();
+    }
+    else
+    {
+        qDebug() << "Ошибка";
     }
 }
 

@@ -26,10 +26,11 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *btn_back;
     QLabel *label_2;
-    QLabel *label;
+    QLabel *label_func;
+    QPushButton *btn_change_func;
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QPushButton *btn_answer;
     QHBoxLayout *horizontalLayout;
     QLabel *label_3;
 
@@ -59,11 +60,18 @@ public:
 
         verticalLayout->addWidget(label_2);
 
-        label = new QLabel(metod_nuton);
-        label->setObjectName("label");
-        label->setStyleSheet(QString::fromUtf8("color: rgb(220, 220, 220);"));
+        label_func = new QLabel(metod_nuton);
+        label_func->setObjectName("label_func");
+        label_func->setStyleSheet(QString::fromUtf8("color: rgb(220, 220, 220);"));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(label_func);
+
+        btn_change_func = new QPushButton(metod_nuton);
+        btn_change_func->setObjectName("btn_change_func");
+        btn_change_func->setStyleSheet(QString::fromUtf8("background-color: rgb(117,174,93);\n"
+"color: rgb(40,49,59);"));
+
+        verticalLayout->addWidget(btn_change_func);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(4);
@@ -74,12 +82,12 @@ public:
 
         horizontalLayout_2->addWidget(lineEdit);
 
-        pushButton = new QPushButton(metod_nuton);
-        pushButton->setObjectName("pushButton");
-        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(117,174,93);\n"
+        btn_answer = new QPushButton(metod_nuton);
+        btn_answer->setObjectName("btn_answer");
+        btn_answer->setStyleSheet(QString::fromUtf8("background-color: rgb(117,174,93);\n"
 "color: rgb(40,49,59);"));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(btn_answer);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -106,9 +114,10 @@ public:
         metod_nuton->setWindowTitle(QCoreApplication::translate("metod_nuton", "Form", nullptr));
         btn_back->setText(QCoreApplication::translate("metod_nuton", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         label_2->setText(QCoreApplication::translate("metod_nuton", "\320\235\320\260\321\205\320\276\320\266\320\264\320\265\320\275\320\270\320\265 \320\275\321\203\320\273\320\265\320\262\320\276\320\263\320\276 \320\272\320\276\321\200\320\275\321\217 \321\204\321\203\320\275\320\272\321\206\320\270\320\270 \320\277\320\276 \320\234\320\265\321\202\320\276\320\264\321\203 \320\235\321\214\321\216\321\202\320\276\320\275\320\260", nullptr));
-        label->setText(QCoreApplication::translate("metod_nuton", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \321\204\321\203\320\275\320\272\321\206\320\270\321\216:", nullptr));
-        pushButton->setText(QCoreApplication::translate("metod_nuton", "\320\240\320\265\321\210\320\270\321\202\321\214", nullptr));
-        label_3->setText(QCoreApplication::translate("metod_nuton", "\320\236\321\202\320\262\320\265\321\202:", nullptr));
+        label_func->setText(QCoreApplication::translate("metod_nuton", "\320\244\321\203\320\275\320\272\321\206\320\270\321\217: ", nullptr));
+        btn_change_func->setText(QCoreApplication::translate("metod_nuton", "\320\237\320\276\320\274\320\265\320\275\321\217\321\202\321\214 \321\204\321\203\320\275\320\272\321\206\320\270\321\216", nullptr));
+        btn_answer->setText(QCoreApplication::translate("metod_nuton", "\320\240\320\265\321\210\320\270\321\202\321\214", nullptr));
+        label_3->setText(QString());
     } // retranslateUi
 
 };

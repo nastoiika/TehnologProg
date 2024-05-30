@@ -1,5 +1,7 @@
 QT       += core gui
 
+QT += network
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -15,6 +17,7 @@ SOURCES += \
     mainwindow.cpp \
     metod_nuton.cpp \
     music_file.cpp \
+    singletonclient.cpp \
     stats.cpp
 
 HEADERS += \
@@ -23,6 +26,7 @@ HEADERS += \
     mainwindow.h \
     metod_nuton.h \
     music_file.h \
+    singletonclient.h \
     stats.h
 
 FORMS += \

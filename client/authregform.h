@@ -2,6 +2,8 @@
 #define AUTHREGFORM_H
 
 #include <QWidget>
+#include <QString>
+#include "functionsforclient.h"
 
 namespace Ui {
 class authregform;
@@ -14,6 +16,7 @@ class authregform : public QWidget
 public:
     explicit authregform(QWidget *parent = nullptr);
     ~authregform();
+    QString login;
 
 private slots:
     void on_btn_auth_clicked();

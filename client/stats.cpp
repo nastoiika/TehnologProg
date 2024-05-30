@@ -23,3 +23,17 @@ void stats::on_btn_back_clicked()
     mainwindow *mainwindow1 = new mainwindow;
     mainwindow1->show();
 }
+
+void stats::on_btn_stat_clicked()
+{
+    authregform authRegFormInstance;
+    QStringList res = stat(authRegFormInstance.login);
+    if (res[0] == "stat-")
+    {
+        ui->label_2->setText("Не удалось получить статистику");
+    }
+    else
+    {
+        ui->label_2->setText("Первое задание: " + res[1] + "; Второе задание: " + res[2]);
+    }
+}

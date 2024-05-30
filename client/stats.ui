@@ -48,6 +48,13 @@ color: rgb(40,49,59);</string>
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="btn_stat">
+     <property name="text">
+      <string>Узнать статистику</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string/>

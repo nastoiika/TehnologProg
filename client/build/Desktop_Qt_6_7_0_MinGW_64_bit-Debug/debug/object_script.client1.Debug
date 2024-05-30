@@ -4,10 +4,12 @@ debug/main.o
 debug/mainwindow.o
 debug/metod_nuton.o
 debug/music_file.o
+debug/singletonclient.o
 debug/stats.o
 debug/moc_authregform.o
 debug/moc_functionsforclient.o
 debug/moc_mainwindow.o
 debug/moc_metod_nuton.o
 debug/moc_music_file.o
+debug/moc_singletonclient.o
 debug/moc_stats.o

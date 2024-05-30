@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
+#include "metod_nuton.h"
+#include "music_file.h"
+#include "stats.h"
 
 namespace Ui {
 class mainwindow;

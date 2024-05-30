@@ -77,6 +77,16 @@ color: rgb(220, 220, 220);</string>
         <enum>QLayout::SetMinimumSize</enum>
        </property>
        <item>
+        <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(220, 220, 220);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="label">
          <property name="styleSheet">
           <string notr="true">color: rgb(220, 220, 220);</string>

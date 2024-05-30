@@ -24,6 +24,7 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *btn_back;
     QLabel *label;
+    QPushButton *btn_stat;
     QLabel *label_2;
 
     void setupUi(QWidget *stats)
@@ -49,6 +50,11 @@ public:
 
         verticalLayout->addWidget(label);
 
+        btn_stat = new QPushButton(stats);
+        btn_stat->setObjectName("btn_stat");
+
+        verticalLayout->addWidget(btn_stat);
+
         label_2 = new QLabel(stats);
         label_2->setObjectName("label_2");
 
@@ -65,6 +71,7 @@ public:
         stats->setWindowTitle(QCoreApplication::translate("stats", "Form", nullptr));
         btn_back->setText(QCoreApplication::translate("stats", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         label->setText(QCoreApplication::translate("stats", "\320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260", nullptr));
+        btn_stat->setText(QCoreApplication::translate("stats", "\320\243\320\267\320\275\320\260\321\202\321\214 \321\201\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\321\203", nullptr));
         label_2->setText(QString());
     } // retranslateUi
 

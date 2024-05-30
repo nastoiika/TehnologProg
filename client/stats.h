@@ -2,6 +2,9 @@
 #define STATS_H
 
 #include <QWidget>
+#include <QStringList>
+#include "functionsforclient.h"
+#include "authregform.h"
 
 namespace Ui {
 class stats;
@@ -17,6 +20,7 @@ public:
 
 private slots:
     void on_btn_back_clicked();
+    void on_btn_stat_clicked();
 
 private:
     Ui::stats *ui;

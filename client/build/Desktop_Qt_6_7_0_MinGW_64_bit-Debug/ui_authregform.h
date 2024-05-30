@@ -29,6 +29,7 @@ public:
     QPushButton *btn_registr;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
+    QLabel *label_5;
     QLabel *label;
     QLineEdit *line_login;
     QLabel *label_2;
@@ -82,6 +83,12 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        label_5 = new QLabel(authregform);
+        label_5->setObjectName("label_5");
+        label_5->setStyleSheet(QString::fromUtf8("color: rgb(220, 220, 220);"));
+
+        verticalLayout->addWidget(label_5);
+
         label = new QLabel(authregform);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("color: rgb(220, 220, 220);"));
@@ -170,6 +177,7 @@ public:
         authregform->setWindowTitle(QCoreApplication::translate("authregform", "Form", nullptr));
         btn_login->setText(QCoreApplication::translate("authregform", "\320\222\320\276\320\271\321\202\320\270", nullptr));
         btn_registr->setText(QCoreApplication::translate("authregform", "\320\240\320\265\320\263\320\270\321\201\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
+        label_5->setText(QString());
         label->setText(QCoreApplication::translate("authregform", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
         label_2->setText(QCoreApplication::translate("authregform", "\320\255\320\273. \320\277\320\276\321\207\321\202\320\260:", nullptr));
         label_3->setText(QCoreApplication::translate("authregform", "\320\237\320\260\321\200\320\276\320\273\321\214:", nullptr));
