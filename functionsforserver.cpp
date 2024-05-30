@@ -5,7 +5,7 @@
 QByteArray auth(int Sock_Descriptor, QString login, QString password){
     database *db = database::getInstance();
     if(db->auth(Sock_Descriptor, login, password)){
-        return "auth+" + login.toUtf8();
+        return "auth+&" + login.toUtf8();
     } else {
         return "auth-";
     }
@@ -14,7 +14,7 @@ QByteArray auth(int Sock_Descriptor, QString login, QString password){
 QByteArray reg(int Sock_Descriptor, QString login, QString password, QString email){
     database *db = database::getInstance();
     if (db->reg(Sock_Descriptor, login, password, email)){
-        return "reg+" + login.toUtf8();
+        return "reg+&" + login.toUtf8();
     } else{
         return "reg-";
     }

@@ -44,12 +44,11 @@ bool database::userDisconnect(int socketDescr) {
 bool database::reg(int sockDescr, QString login, QString password, QString email) {
     QSqlQuery query(db);
     query.prepare("INSERT INTO user (username, password, email, stat1, stat2, id_connection)"
-                  "VALUES (:log, :pass, :mail, 0, 0, :sockDesc)");
+                  "VALUES (:log, :pass, :mail, 0, 0, 0)");
 
     query.bindValue(":log", login);
     query.bindValue(":pass", password);
     query.bindValue(":mail", email);
-    query.bindValue(":sockDesc", sockDescr);
     if (query.exec()){ // если удалось выполнить запрос
         return true;
     }
