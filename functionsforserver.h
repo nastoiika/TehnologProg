@@ -5,16 +5,17 @@
 #include <QDebug>
 #include <QString>
 #include <QStringList>
+#include "database.h"
 
-QByteArray auth(QString login, QString password);
+QByteArray auth(int Sock_Descriptor, QString login, QString password);
 
-QByteArray reg(QString login, QString password, QString email);
+QByteArray reg(int Sock_Descriptor, QString login, QString password, QString email);
 
-QByteArray stat(QString login);
+QByteArray stat(int Sock_Descriptor, QString login);
 
-QByteArray check(QString task_number, QString variant, QString answer);
+QByteArray check(int Sock_Descriptor, QString task_number, QString variant, QString answer);
 
-QByteArray parse(QString data_from_user);
+QByteArray parse(int Sock_Descriptor, QString data_from_user);
 
 
 #endif // FUNCTIONSFORSERVER_H

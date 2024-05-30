@@ -2,16 +2,18 @@
 
 
 
-QByteArray auth(QString login, QString password){
-    if (login == "user" && password == "123"){
-        return "auth+&" + login.toUtf8();
-    } else{
+QByteArray auth(int Sock_Descriptor, QString login, QString password){
+    database *db = database::getInstance();
+    if(db->auth(Sock_Descriptor, login, password)){
+        return "auth+" + login.toUtf8();
+    } else {
         return "auth-";
     }
 }
 
-QByteArray reg(QString login, QString password, QString email){
-    if (login == "user" && password == "123"){
+QByteArray reg(int Sock_Descriptor, QString login, QString password, QString email){
+    database *db = database::getInstance();
+    if (db->reg(Sock_Descriptor, login, password, email)){
         return "reg+" + login.toUtf8();
     } else{
         return "reg-";
@@ -19,13 +21,17 @@ QByteArray reg(QString login, QString password, QString email){
 }
 
 
-QByteArray stat(QString login){
-    return "stat&0&3&";
+QByteArray stat(int Sock_Descriptor, QString login){
+    database *db = database::getInstance();
+    return db->stat(Sock_Descriptor, login).toUtf8();
 }
 
-QByteArray check(QString task_number, QString variant, QString answer){
+QByteArray check(int Sock_Descriptor, QString task_number, QString variant, QString answer){
+    database *db = database::getInstance();
+    if (db->check(Sock_Descriptor, task_number, variant, answer))
     return "check+";
 }
+
 
 int func_number (QString name_of_func){
     if (name_of_func == "reg") {return 1;}
@@ -36,26 +42,25 @@ int func_number (QString name_of_func){
 }
 
 
-
-QByteArray parse(QString data_from_user){
+QByteArray parse(int Sock_Descriptor, QString data_from_user){
     QByteArray result;
     QStringList data_list = data_from_user.split('&');
     int number_of_func = func_number(data_list[0]);
     switch (number_of_func) {
     case 1:{
-        result = reg(data_list[1], data_list[2], data_list[3]);
+        result = reg(Sock_Descriptor, data_list[1], data_list[2], data_list[3]);
         break;
     }
     case 2:{
-        result = auth(data_list[1], data_list[2]);
+        result = auth(Sock_Descriptor, data_list[1], data_list[2]);
         break;
     }
     case 3:{
-        result = stat(data_list[1]);
+        result = stat(Sock_Descriptor, data_list[1]);
         break;
     }
     case 4:{
-        result = check(data_list[1], data_list[2], data_list[3]);
+        result = check(Sock_Descriptor, data_list[1], data_list[2], data_list[3]);
         break;
     }
     case 5:{

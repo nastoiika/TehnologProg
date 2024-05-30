@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QString>
+#include "database.h"
 
 MyTcpServer::~MyTcpServer()
 {
@@ -51,12 +52,14 @@ void MyTcpServer::slotServerRead(){
         else
             res.append(array);
     }
-    curr_mTcpSocket->write(parse(res));
-
+    qDebug() << res.toUtf8();
+    curr_mTcpSocket->write(parse(curr_mTcpSocket->socketDescriptor(),res));
 }
 
 void MyTcpServer::slotClientDisconnected(){
     QTcpSocket *curr_mTcpSocket = qobject_cast<QTcpSocket*>(sender());
+    database *db = database::getInstance();
+    db->userDisconnect(curr_mTcpSocket->socketDescriptor());
     curr_mTcpSocket->close();
-    mTcpSockets.remove(mTcpServer->socketDescriptor());
+    mTcpSockets.remove(mTcpServer->socketDescriptor());    
 }
