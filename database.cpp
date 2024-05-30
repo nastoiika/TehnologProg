@@ -7,7 +7,7 @@ password VARCHAR(100) NOT NULL,
 email VARCHAR(256) NOT NULL UNIQUE,
 stat1 INTEGER NOT NULL,
 stat2 INTEGER NOT NULL,
-id_connection INTEGER);
+id_connection INTEGER NOT NULL);
 */
 
 database *database::p_instance = nullptr;
@@ -34,7 +34,7 @@ database* database::getInstance() {
 
 void database::userDisconnect(int socketDescr) {
     QSqlQuery query(db);
-    query.prepare("UPDATE user SET id_connection = NULL WHERE id_connection = :sockDesc");
+    query.prepare("UPDATE user SET id_connection = 0 WHERE id_connection = :sockDesc");
     query.bindValue(":sockDesc", socketDescr);
     query.exec();
 }

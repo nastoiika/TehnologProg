@@ -9,7 +9,7 @@
 #include <QDebug>
 
 #include <QMap>
-
+#include "database.h"
 
 class MyTcpServer : public QObject
 {
@@ -25,6 +25,7 @@ private:
     QTcpServer * mTcpServer;
     QMap<int, QTcpSocket*> mTcpSockets;
     //int server_status;
+
 };
 #endif // MYTCPSERVER_H
 
