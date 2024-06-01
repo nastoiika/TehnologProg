@@ -5,11 +5,15 @@
 #include <QByteArray>
 #include <QString>
 
+#include <QDebug>
+
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QVariant>
+
+#include"sha1.h"
 
 class database;
 

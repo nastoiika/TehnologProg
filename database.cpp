@@ -1,4 +1,5 @@
 #include "database.h"
+#include "QDebug""
 /*
 CREATE TABLE user(
 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -43,11 +44,13 @@ bool database::userDisconnect(int socketDescr) {
 
 bool database::reg(int sockDescr, QString login, QString password, QString email) {
     QSqlQuery query(db);
+    std::string hash_pass = sha1(password.toStdString());
+    qDebug() << hash_pass;
     query.prepare("INSERT INTO user (username, password, email, stat1, stat2, id_connection)"
                   "VALUES (:log, :pass, :mail, 0, 0, 0)");
 
     query.bindValue(":log", login);
-    query.bindValue(":pass", password);
+    query.bindValue(":pass", QString::fromStdString(hash_pass));
     query.bindValue(":mail", email);
     if (query.exec()){ // если удалось выполнить запрос
         return true;
@@ -64,10 +67,12 @@ bool database::auth(int socketDescr, QString login, QString password) {
     QSqlRecord rec = query.record();
     if(query.next()){ // если нашлась такая запись
         // проверяем пароль
+        std::string hash_pass = sha1(password.toStdString());
         const int passwordIndex = rec.indexOf("password");
         QString pass = query.value(passwordIndex).toString();
+        qDebug() << pass;
         // если пароли совпали
-        if (pass == password) {
+        if (pass == QString::fromStdString(hash_pass)) {
             QSqlQuery query1(db);
             query1.prepare("UPDATE user SET id_connection = :sockDesc WHERE username = :log");
             query1.bindValue(":sockDesc", socketDescr);
