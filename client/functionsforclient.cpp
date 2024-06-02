@@ -5,9 +5,9 @@
 
 bool is_auth(QString login, QString password)
 {
-    QString res = SingletonClient::getInstance()->send_msg_to_server("auth&" + login + "&" + password + "\r\n");
+    QString res = SingletonClient::getInstance()->send_msg_to_server("auth&" + login + "&" + password);
     qDebug() << res;
-    if (res == "auth+"+ login)
+    if (res == "auth+&" + login)
     {
         return true;
     }
@@ -19,9 +19,9 @@ bool is_auth(QString login, QString password)
 
 bool on_reg(QString login, QString password, QString email)
 {
-    QString res = SingletonClient::getInstance()->send_msg_to_server("reg&" + login + "&" + password + "&" + email + "\r\n");
+    QString res = SingletonClient::getInstance()->send_msg_to_server("reg&" + login + "&" + password + "&" + email);
     qDebug() << res;
-    if (res == "reg+")
+    if (res == "reg+&" + login)
     {
         return true;
     }
@@ -33,7 +33,7 @@ bool on_reg(QString login, QString password, QString email)
 
 QStringList stat(QString login)
 {
-    QString res = SingletonClient::getInstance()->send_msg_to_server("stat&" + login + "\r\n");
+    QString res = SingletonClient::getInstance()->send_msg_to_server("stat&" + login);
     qDebug() << res;
     QStringList parts = res.split('&');
 
@@ -41,9 +41,9 @@ QStringList stat(QString login)
 
 }
 
-bool func_nuton(QString login)
+bool func_nuton(QString login, QString answer)
 {
-    QString res = SingletonClient::getInstance()->send_msg_to_server("task1&" + login + "\r\n");
+    QString res = SingletonClient::getInstance()->send_msg_to_server("task1&" + login + "&" + answer);
     qDebug() << res;
     if (res == "task-")
     {
@@ -54,5 +54,6 @@ bool func_nuton(QString login)
         return true;
     }
 }
+
 
 

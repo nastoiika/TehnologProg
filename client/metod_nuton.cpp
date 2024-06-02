@@ -32,7 +32,7 @@ void metod_nuton::on_btn_answer_clicked()
 {
     authregform authRegFormInstance;
     QString login = authRegFormInstance.login;
-    bool res = func_nuton(login);
+    bool res = func_nuton(login, ui->lineEdit->text());
     if (res)
     {
         ui->label_3->setText("Вы решили правильно");

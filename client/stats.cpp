@@ -26,8 +26,7 @@ void stats::on_btn_back_clicked()
 
 void stats::on_btn_stat_clicked()
 {
-    authregform authRegFormInstance;
-    QStringList res = stat(authRegFormInstance.login);
+    QStringList res = stat(login);
     if (res[0] == "stat-")
     {
         ui->label_2->setText("Не удалось получить статистику");

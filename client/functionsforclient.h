@@ -33,7 +33,7 @@ bool on_reg(QString login, QString password, QString email);
 
 QStringList stat(QString login);
 
-bool func_nuton(QString login);
+bool func_nuton(QString login, QString answer);
 
 
 #endif // FUNCTIONSFORCLIENT_H

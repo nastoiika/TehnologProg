@@ -37,6 +37,7 @@ void authregform::on_btn_auth_clicked()
 
         // Открываем mainwindow
         mainwindow *mainwindow1 = new mainwindow;
+        mainwindow1->login = ui->line_login->text();
         mainwindow1->show();
     }
     else
@@ -47,7 +48,7 @@ void authregform::on_btn_auth_clicked()
 
 void authregform::on_btn_reg_clicked()
 {
-    QString login = ui->line_login->text();
+    login = ui->line_login->text();
     QString password = ui->line_password->text();
     QString email = ui->line_email->text();
     QString confirm = ui->line_confirm->text();
@@ -99,6 +100,10 @@ void authregform::on_btn_registr_clicked()
     // Изменение нижней границы кнопки btn_login
     style = "QPushButton { border: none; color: rgb(220, 220, 220);}";
     ui->btn_login->setStyleSheet(style);
-
-
 }
+
+QString authregform::getLogin() const
+{
+    return login;
+}
+

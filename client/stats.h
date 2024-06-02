@@ -17,6 +17,7 @@ class stats : public QWidget
 public:
     explicit stats(QWidget *parent = nullptr);
     ~stats();
+    QString login;
 
 private slots:
     void on_btn_back_clicked();

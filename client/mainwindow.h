@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QWidget>
+#include <QString>
 #include "metod_nuton.h"
 #include "music_file.h"
 #include "stats.h"
@@ -17,6 +18,7 @@ class mainwindow : public QWidget
 public:
     explicit mainwindow(QWidget *parent = nullptr);
     ~mainwindow();
+    QString login;
 
 private slots:
     void on_btn_exit_clicked();

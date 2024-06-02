@@ -52,5 +52,6 @@ void mainwindow::on_btn_stat_clicked()
 
     // Открываем stats
     stats *stats1 = new stats;
+    stats1->login = login;
     stats1->show();
 }

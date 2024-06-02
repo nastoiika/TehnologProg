@@ -1,4 +1,5 @@
 release/authregform.o
+release/des.o
 release/functionsforclient.o
 release/main.o
 release/mainwindow.o
@@ -7,7 +8,6 @@ release/music_file.o
 release/singletonclient.o
 release/stats.o
 release/moc_authregform.o
-release/moc_functionsforclient.o
 release/moc_mainwindow.o
 release/moc_metod_nuton.o
 release/moc_music_file.o

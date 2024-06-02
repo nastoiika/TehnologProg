@@ -12,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     authregform.cpp \
+    des.cpp \
     functionsforclient.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     authregform.h \
+    des.h \
     functionsforclient.h \
     mainwindow.h \
     metod_nuton.h \

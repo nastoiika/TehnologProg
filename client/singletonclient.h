@@ -9,6 +9,7 @@
 #include <QByteArray>
 #include <QDebug>
 #include <iostream>
+#include "des.h"
 
 class SingletonClient;
 

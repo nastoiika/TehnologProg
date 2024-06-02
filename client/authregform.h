@@ -17,6 +17,7 @@ public:
     explicit authregform(QWidget *parent = nullptr);
     ~authregform();
     QString login;
+    QString getLogin() const;
 
 private slots:
     void on_btn_auth_clicked();

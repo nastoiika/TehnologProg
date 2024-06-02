@@ -52,11 +52,14 @@ public:
 
         btn_stat = new QPushButton(stats);
         btn_stat->setObjectName("btn_stat");
+        btn_stat->setStyleSheet(QString::fromUtf8("background-color: rgb(117,174,93);\n"
+"color: rgb(40,49,59);"));
 
         verticalLayout->addWidget(btn_stat);
 
         label_2 = new QLabel(stats);
         label_2->setObjectName("label_2");
+        label_2->setStyleSheet(QString::fromUtf8("color: rgb(220, 220, 220);"));
 
         verticalLayout->addWidget(label_2);
 
