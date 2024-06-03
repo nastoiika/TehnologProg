@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QString>
+#include <string>
 
 MyTcpServer::~MyTcpServer()
 {
@@ -50,7 +51,11 @@ void MyTcpServer::slotServerRead(){
             res.append(array);
     }
     qDebug() << res.toUtf8();
-    curr_mTcpSocket->write(parse(curr_mTcpSocket->socketDescriptor(),res));
+    Des d1;
+    QStringList parts = res.split('&');
+    res = QString::fromStdString(d1.decrypt(parts[0].toStdString(), parts[1].toStdString()));
+    string key = d1.generateRandomString();
+    curr_mTcpSocket->write((QString::fromStdString(d1.encrypt((parse(curr_mTcpSocket->socketDescriptor(), res)).toStdString(), key)) + "&" + QString::fromStdString(key)).toUtf8());
 }
 
 void MyTcpServer::slotClientDisconnected(){
