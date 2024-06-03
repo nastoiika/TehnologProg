@@ -21,11 +21,8 @@ metod_nuton::~metod_nuton()
 
 void metod_nuton::on_btn_back_clicked()
 {
+    emit backToMainWindow();
     this->close();
-
-    // Открываем mainwindow
-    mainwindow *mainwindow1 = new mainwindow;
-    mainwindow1->show();
 }
 
 void metod_nuton::on_btn_answer_clicked()
@@ -64,4 +61,9 @@ void metod_nuton::on_btn_change_func_clicked()
                    QString::number(c);
 
     ui->label_func->setText(func);
+}
+
+void metod_nuton::setLogin(const QString &login)
+{
+    this->login = login;
 }

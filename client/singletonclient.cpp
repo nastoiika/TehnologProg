@@ -25,12 +25,30 @@ SingletonClient* SingletonClient::getInstance()
 
 QString SingletonClient::send_msg_to_server(QString query)
 {
-    mTcpSocket->write(query.toUtf8());
+    Des d1;
+    std::string key = d1.generateRandomString();
+    query = QString::fromStdString(d1.encrypt(query.toStdString(), key));
+
+    // Преобразование объединённой строки в QByteArray
+    QByteArray dataToSend = query.toUtf8() + "&" + QString::fromStdString(key).toUtf8();
+    mTcpSocket->write(dataToSend);
+
     mTcpSocket->waitForReadyRead();
     QString msg = "";
-    while (mTcpSocket->bytesAvailable() > 0) {
+    while (mTcpSocket->bytesAvailable() > 0)
+    {
         QByteArray array = mTcpSocket->readAll();
         msg.append(array);
     }
+
+    QStringList parts = msg.split('&');
+    if (parts.size() < 2) {
+        qWarning() << "Invalid response format. Expected at least two parts separated by '&'.";
+        return "";
+    }
+
+    msg = QString::fromStdString(d1.decrypt(parts[0].toStdString(), parts[1].toStdString()));
     return msg;
 }
+
+

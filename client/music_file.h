@@ -19,6 +19,9 @@ private slots:
     void on_btn_back_clicked();
     void on_btn_choose_music_clicked();
 
+signals:
+    void backToMainWindow();
+
 private:
     Ui::music_file *ui;
 };

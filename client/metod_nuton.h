@@ -5,6 +5,7 @@
 #include <QString>
 #include "authregform.h"
 #include "functionsforclient.h"
+#include "mainwindow.h"
 
 namespace Ui {
 class metod_nuton;
@@ -18,14 +19,19 @@ public:
     explicit metod_nuton(QWidget *parent = nullptr);
     ~metod_nuton();
     QString func;
+    void setLogin(const QString &login);
 
 private slots:
     void on_btn_back_clicked();
     void on_btn_answer_clicked();
     void on_btn_change_func_clicked();
 
+signals:
+    void backToMainWindow();
+
 private:
     Ui::metod_nuton *ui;
+    QString login;
 };
 
 #endif // METOD_NUTON_H

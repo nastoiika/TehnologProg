@@ -21,11 +21,8 @@ music_file::~music_file()
 
 void music_file::on_btn_back_clicked()
 {
+    emit backToMainWindow();
     this->close();
-
-    // Открываем mainwindow
-    mainwindow *mainwindow1 = new mainwindow;
-    mainwindow1->show();
 }
 
 void music_file::on_btn_choose_music_clicked()

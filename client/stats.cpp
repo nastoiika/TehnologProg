@@ -1,6 +1,8 @@
 #include "stats.h"
 #include "ui_stats.h"
 
+#include <QDebug>
+
 #include "mainwindow.h"
 
 stats::stats(QWidget *parent)
@@ -17,16 +19,19 @@ stats::~stats()
 
 void stats::on_btn_back_clicked()
 {
+    emit backToMainWindow();
     this->close();
+}
 
-    // Открываем mainwindow
-    mainwindow *mainwindow1 = new mainwindow;
-    mainwindow1->show();
+void stats::setLogin(const QString &login)
+{
+    this->login = login;
 }
 
 void stats::on_btn_stat_clicked()
 {
     QStringList res = stat(login);
+    qDebug() << login; // Правильное использование qDebug()
     if (res[0] == "stat-")
     {
         ui->label_2->setText("Не удалось получить статистику");

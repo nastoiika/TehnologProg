@@ -2,14 +2,17 @@
 #define SINGLETONCLIENT_H
 
 
-
 #include <QObject>
 #include <QTcpSocket>
 #include <QtNetwork>
 #include <QByteArray>
+#include <QStringList>
 #include <QDebug>
+#include <QString>
 #include <iostream>
+#include <string>
 #include "des.h"
+
 
 class SingletonClient;
 

@@ -1,53 +1,37 @@
-#ifndef DES_H
-#define DES_H
-
-#define _CRT_SECURE_NO_WARNINGS
-# include <stdio.h>
-# include <locale.h>
-# include <fstream>
-# include <string.h>
-# include <iostream>
-# include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cmath>
+#include <bitset>
+#include <random>
 using namespace std;
-
 
 class Des
 {
-public:
-    int key[64];
-    int keyi[16][48],
-        total[64],
-        left[32],
-        right[32],
-        ck[28],
-        dk[28],
-        expansion[48],
-        z[48],
-        xor1[48],
-        sub[32],
-        p[32],
-        xor2[32],
-        temp[64],
-        pc1[56],
-        ip[64],
-        inv[8][8];
+private:
+    string round_keys[16];
+    string pt;
 
-    char final[1000];
-    void IP();
-    void PermChoice1();
-    void PermChoice2();
-    void Expansion();
-    void inverse();
-    void xor_two();
-    void xor_oneE(int);
-    void xor_oneD(int);
-    void substitution();
-    void permutation();
-    void keygen();
-    char* Encrypt(char*);
-    char* Decrypt(char* Text1, int key_des[64]);
-    void generate_key();
+    string convertDecimalToBinary(int decimal);
+    int convertBinaryToDecimal(string binary);
+    string shift_left_once(string key_chunk);
+    string shift_left_twice(string key_chunk);
+    string Xor(string a, string b);
+    void generate_keys(string key);
+    string DES_block(string block, bool is_decryption);
+    string stringToBinary(string s);
+    string binaryToString(string binary);
+    string padString(string s);
+    string unpadString(string s);
+    string padKey(string key);
+
+
+public:
+    Des();
+    ~Des();
+
+    string decrypt(string cipher_text, string key);
+    string encrypt(string text, string key);
+    string generateRandomString();
 
 };
-
-#endif // DES_H
