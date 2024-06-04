@@ -20,6 +20,7 @@ public:
     ~metod_nuton();
     QString func;
     void setLogin(const QString &login);
+    QString login;
 
 private slots:
     void on_btn_back_clicked();
@@ -31,7 +32,12 @@ signals:
 
 private:
     Ui::metod_nuton *ui;
-    QString login;
+
+    double x1;
+    double x2;
+    int a;
+    int b;
+    int c;
 };
 
 #endif // METOD_NUTON_H

@@ -33,6 +33,7 @@ void mainwindow::on_btn_metodN_clicked()
 
     // Открываем metod_nuton и передаем login
     metod_nuton *metod_nuton1 = new metod_nuton;
+    metod_nuton1->setLogin(login);
     connect(metod_nuton1, &metod_nuton::backToMainWindow, this, &mainwindow::showMainWindow);
     metod_nuton1->show();
 }
