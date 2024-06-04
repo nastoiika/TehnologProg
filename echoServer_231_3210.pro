@@ -18,9 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    des.cpp \
     database.cpp \
     functionsforserver.cpp \
     main.cpp \
+    method_newtona.cpp \
     mytcpserver.cpp \
     sha1.cpp
 
@@ -30,7 +32,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    des.h \
     database.h \
     functionsforserver.h \
+    method_newtona.h \
     mytcpserver.h \
     sha1.h

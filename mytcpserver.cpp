@@ -54,6 +54,7 @@ void MyTcpServer::slotServerRead(){
     Des d1;
     QStringList parts = res.split('&');
     res = QString::fromStdString(d1.decrypt(parts[0].toStdString(), parts[1].toStdString()));
+    qDebug() << res;
     string key = d1.generateRandomString();
     curr_mTcpSocket->write((QString::fromStdString(d1.encrypt((parse(curr_mTcpSocket->socketDescriptor(), res)).toStdString(), key)) + "&" + QString::fromStdString(key)).toUtf8());
 }

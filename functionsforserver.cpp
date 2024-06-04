@@ -13,7 +13,7 @@ QByteArray auth(int Sock_Descriptor, QString login, QString password){
 
 QByteArray reg(int Sock_Descriptor, QString login, QString password, QString email){
     database *db = database::getInstance();
-    if (db->reg(Sock_Descriptor, login, password, email)){
+    if (db->reg(login, password, email)){
         return "reg+&" + login.toUtf8();
     } else{
         return "reg-";
@@ -26,21 +26,38 @@ QByteArray stat(int Sock_Descriptor, QString login){
     return db->stat(Sock_Descriptor, login).toUtf8();
 }
 
-QByteArray check(int Sock_Descriptor, QString task_number, QString variant, QString answer){
+QByteArray task1(int Sock_Descriptor, QString login, QString a, QString b, QString c, QString x1, QString x2, QString answer){
     database *db = database::getInstance();
-    if (db->check(Sock_Descriptor, task_number, variant, answer)){
+    double solution_of_equation = newton(x1.toDouble(), x2.toDouble(), a.toInt(), b.toInt(), c.toInt());
+    qDebug() << solution_of_equation;
+    bool result = answer == QString::number(solution_of_equation);
+    db->check(Sock_Descriptor, login, 1, result);
+    if (result){
         return "check+";
+    } else {
+        return "check-";
     }
-    return "check-";
 }
 
+
+QByteArray task2(int Sock_Descriptor, QString login, QString answer){
+    database *db = database::getInstance();
+    bool result = true;
+    db->check(Sock_Descriptor, login, 2, result);
+    if (result){
+        return "check+";
+    } else {
+        return "check-";
+    }
+}
 
 int func_number (QString name_of_func){
     if (name_of_func == "reg") {return 1;}
     if (name_of_func == "auth") {return 2;}
     if (name_of_func == "stat") {return 3;}
-    if (name_of_func == "check") {return 4;}
-    return 5;
+    if (name_of_func == "task1") {return 4;}
+    if (name_of_func == "task2") {return 5;}
+    return 6;
 }
 
 
@@ -63,10 +80,14 @@ QByteArray parse(int Sock_Descriptor, QString data_from_user){
         break;
     }
     case 4:{
-        result = check(Sock_Descriptor, data_list[1], data_list[2], data_list[3]);
+        result = task1(Sock_Descriptor, data_list[1], data_list[2], data_list[3], data_list[4], data_list[5], data_list[6], data_list[7]);
         break;
     }
     case 5:{
+        result = task2(Sock_Descriptor, data_list[1], data_list[2]);
+        break;
+    }
+    case 6:{
         result = "incorrect command";
         break;
     }

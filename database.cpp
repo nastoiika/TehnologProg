@@ -1,5 +1,5 @@
 #include "database.h"
-#include "QDebug""
+#include "QDebug"
 /*
 CREATE TABLE user(
 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -42,7 +42,7 @@ bool database::userDisconnect(int socketDescr) {
 
 
 
-bool database::reg(int sockDescr, QString login, QString password, QString email) {
+bool database::reg(QString login, QString password, QString email) {
     QSqlQuery query(db);
     std::string hash_pass = sha1(password.toStdString());
     qDebug() << hash_pass;
@@ -105,11 +105,38 @@ QString database::stat(int socketDescr, QString login) {
 }
 
 
-bool database::check(int socketDescr, QString task_num, QString variant, QString answer){
-    if (task_num == "1" && socketDescr!=0 && variant == "1" && answer == "1"){
-        return true;
-    }
-    else {
-        return false;
+void database::check(int socketDescr, QString login, int task_number, bool result){
+     QSqlQuery query(db);
+    switch (task_number){
+     case 1:{
+        if (result){
+             query.prepare("UPDATE user SET stat1 = stat1 + 1 WHERE username = :login AND id_connection = :sockDesc");
+             query.bindValue(":login", login);
+             query.bindValue(":sockDesc", socketDescr);
+             query.exec();
+        }
+        else {
+            query.prepare("UPDATE user SET stat1 = stat1 - 1 WHERE username = :login AND id_connection = :sockDesc");
+            query.bindValue(":login", login);
+            query.bindValue(":sockDesc", socketDescr);
+            query.exec();
+        }
+        break;
+     }
+     case 2:{
+         if (result){
+             query.prepare("UPDATE user SET stat2 = stat2 + 1 WHERE username = :login AND id_connection = :sockDesc");
+             query.bindValue(":login", login);
+             query.bindValue(":sockDesc", socketDescr);
+             query.exec();
+         }
+         else {
+             query.prepare("UPDATE user SET stat2 = stat2 - 1 WHERE username = :login AND id_connection = :sockDesc");
+             query.bindValue(":login", login);
+             query.bindValue(":sockDesc", socketDescr);
+             query.exec();
+         }
+         break;
+     }
     }
 }

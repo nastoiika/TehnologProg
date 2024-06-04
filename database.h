@@ -40,10 +40,10 @@ protected:
     friend class databaseDestroyer;
 public:
     static database *getInstance();
-    bool reg(int sockDescr, QString log, QString pass, QString email);
+    bool reg(QString log, QString pass, QString email);
     bool auth(int sockDescr, QString log, QString pass);
     QString stat(int socketDescr, QString log);
-    bool check(int socketDescr, QString task_num, QString variant, QString answer);
+    void check(int socketDescr, QString login, int task_number, bool result);
     bool userDisconnect(int sockDescr);
 };
 
